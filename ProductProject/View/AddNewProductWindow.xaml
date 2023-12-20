@@ -1,0 +1,23 @@
+﻿<Window x:Class="ProductProject.View.AddNewProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductProject.View"
+        mc:Ignorable="d"
+        Title="AddNewProductWindow" Height="400" Width="400"
+        Name="AddProductWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <TextBlock Text="Name:"></TextBlock>
+            <TextBox Name="Name_TextBox" Text="{Binding Name}"></TextBox>
+            <TextBlock Text="Price:"></TextBlock>
+            <TextBox Name="Price_TextBox" Text="{Binding Price}"></TextBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Добавить" Command="{Binding AddNewProduct}" CommandParameter="{Binding ElementName=AddProductWindow}"></Button>
+    </Grid>
+</Window>

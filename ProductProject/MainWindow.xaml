@@ -1,0 +1,59 @@
+﻿<Window x:Class="ProductProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" SelectedItem="{Binding SelectedItem}">
+            <TabItem Name="Product_Item">
+                <TabItem.Header>
+                    <TextBlock Text="Product"></TextBlock>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Command="{Binding EditItemWindow}"></MenuItem>
+                        <MenuItem Header="Delete" Command="{Binding DeleteItem}"></MenuItem>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView Name="ProjectsListView" ItemsSource="{Binding ProductsList}" SelectedItem="{Binding SelectedProduct}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="Auto"></GridViewColumn>
+                            <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Path=Price}" Width="Auto"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="Link_Item">
+                <TabItem.Header>
+                    <TextBlock Text="Link"></TextBlock>
+                </TabItem.Header>
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Command="{Binding EditItemWindow}"></MenuItem>
+                        <MenuItem Header="Delete" Command="{Binding DeleteItem}"></MenuItem>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <ListView Name="LinksListView" ItemsSource="{Binding LinksList}" SelectedItem="{Binding SelectedLink}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=LinkProductName.Name}" Width="Auto"></GridViewColumn>
+                            <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path=Count}" Width="Auto"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Add Product" Command="{Binding OpenAddNewProductWindow}"></Button>
+            <Button Content="Add Link" Command="{Binding OpenAddNewLinkWindow}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

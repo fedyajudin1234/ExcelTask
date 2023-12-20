@@ -1,0 +1,26 @@
+﻿<Window x:Class="ProductProject.View.AddNewLinkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductProject.View"
+        mc:Ignorable="d"
+        Title="AddNewLinkWindow" Height="400" Width="400"
+        Name="AddLinkWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <TextBlock Text="Product:"></TextBlock>
+            <ComboBox Name="Product_ComboBox" ItemsSource="{Binding ProductsList}" DisplayMemberPath="Name" SelectedItem="{Binding Product}"></ComboBox>
+            <CheckBox Name="Is_Included" Content="Is a part of another product?" Checked="Is_Included_Checked"></CheckBox>
+            <TextBlock Name="Count_TextBlock" Text="Count:" Visibility="Hidden"></TextBlock>
+            <TextBox Name="Count_TextBox" Text="{Binding Count}" Visibility="Hidden"></TextBox>
+            <TextBlock Name="Relation_TextBox" Text="Is related to:" Visibility="Hidden"></TextBlock>
+            <ComboBox Name="Relation_ComboBox" ItemsSource="{Binding ProductsList}" DisplayMemberPath="Name" SelectedItem="{Binding UpProduct}" Visibility="Hidden"></ComboBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Добавить" Command="{Binding AddNewLink}" CommandParameter="{Binding ElementName=AddLinkWindow}"></Button>
+    </Grid>
+</Window>
